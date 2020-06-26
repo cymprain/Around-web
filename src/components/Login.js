@@ -1,11 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Form, Icon, Input, Button, message } from 'antd';
 import { Link } from 'react-router-dom';
 import { API_ROOT } from '../constants';
 
-
-
-class NormalLoginForm extends Component {
+class NormalLoginForm extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -26,11 +24,8 @@ class NormalLoginForm extends Component {
                     })
                     .then((data) => {
                         console.log(data);
-
-                        //step4: 登录成功，保存token -> 用于实现持久登录
-
-                        // this.props.handleLoginSucceed(data);
-                        // message.success('Login succeed!');
+                        this.props.handleLoginSucceed(data);
+                        message.success('Login succeed!');
                     })
                     .catch((err) => {
                         console.error(err);
@@ -72,7 +67,6 @@ class NormalLoginForm extends Component {
                     Or <Link to="/register">register now!</Link>
                 </Form.Item>
             </Form>
-
         );
     }
 }
