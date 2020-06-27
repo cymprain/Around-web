@@ -10,7 +10,8 @@ import {
     POST_TYPE_VIDEO,
     POST_TYPE_UNKNOWN } from '../constants'
 import Gallery from './Gallery';
-import CreatePostButton from "./CreatePostButton"
+import CreatePostButton from "./CreatePostButton";
+import AroundMap from "./AroundMap";
 
 const { TabPane } = Tabs;
 
@@ -139,7 +140,14 @@ export class Home extends React.Component {
                     {this.renderPosts(POST_TYPE_VIDEO)}
                 </TabPane>
                 <TabPane tab="Map" key="3">
-                    Content of tab 3
+                    <AroundMap
+                        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3CEh9DXuyjozqptVB5LA-dN7MxWWkr9s&v=3.exp&libraries=geometry,drawing,places"
+                        loadingElement={<div style={{ height: `100%` }} />}
+                        containerElement={<div style={{ height: `600px` }} />}
+                        mapElement={<div style={{ height: `100%` }} />}
+                        posts={this.state.posts}
+                        loadNearbyPosts={this.loadNearbyPosts}
+                    />
                 </TabPane>
             </Tabs>
         );
